@@ -1,0 +1,12 @@
+.location {
+    border-style: groove;
+    border-color: rgb(179, 179, 194);
+   font-style: oblique
+}
+
+.style{
+    background-color: darkslategrey;
+    color: azure;
+    font-size: 4.1em;
+    font-style: italic
+}
