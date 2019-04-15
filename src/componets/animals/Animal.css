@@ -1,12 +1,4 @@
-.employee {
-border-style: groove;
-border-color: rgb(179, 179, 194);
-font-style: oblique
-}
-
-
-
-.employees {
+.animals {
     display: flex;
     justify-content: space-evenly;
 }
@@ -31,7 +23,6 @@ font-style: oblique
     margin: 12px 0 0 0;
     font-size: 0.7em;
 }
-
 .content {
     margin-top: 50px;
 

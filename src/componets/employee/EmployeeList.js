@@ -1,20 +1,26 @@
-
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
 export default class EmployeeList extends Component {
- 
-render(){ 
+  render() {
     return (
-        <section className = "content">
-        <h3 className = "style">Employee List</h3>
-        <section className ="employees">
-        {this.props.employees.map(employee => 
-        <div key={employee.id}>
-                 <p className = "employee">{employee.name}</p>         
-        </div>)}
-        </section>
-        </section>
-    )
+        <section className="content employees">
+          <h1 className ="style"> Employee Lists</h1>
+        {
+            this.props.employees.map(employee =>
+                <div key={employee.id} className="card">
+                    <div className="card-body">
+                        <h5 className="card-title">
+                            {employee.name}
+                            <button
+                                onClick={() => this.props.deleteEmployee(employee.id)}
+                                className="card-link">Delete</button>
+                        </h5>
+                    </div>
+                </div>
+            )
         }
+        </section>
+    );
+  }
+}
 
-    }
