@@ -4,7 +4,10 @@ import AnimalList from './animals/AnimalList'
 import LocationList from './location/LocationLists'
 import EmployeeList from './employee/EmployeeList'
 import OwnerList from './owners/OwnerList'
-
+import AnimalManager from '..modules/AnimalManager'
+import EmployeeManager from '../module/EmployeeManager';
+import LocationManager from '../module/LocationManager';
+import OwnerManager from '../module/OwnerManager';
 export default class ApplicationViews extends Component {
     
   
@@ -19,17 +22,13 @@ export default class ApplicationViews extends Component {
     componentDidMount() {
         const newState = {}
     
-        fetch("http://localhost:5002/animals")
-            .then(r => r.json())
+        AnimalManager.getAll()
             .then(animals => newState.animals = animals)
-            .then(() => fetch("http://localhost:5002/employees")
-            .then(r => r.json()))
+        EmployeeManager.getAll()
             .then(employees => newState.employees = employees)
-            .then(() => fetch("http://localhost:5002/locations"))
-            .then((r => r.json()))
+        LocationManager.getAll()
             .then(locations => newState.locations = locations )
-            .then(() => fetch("http://localhost:5002/owners"))
-            .then((r => r.json()))
+        OwnerManager.getAll()
             .then(owners => newState.owners = owners)
             .then(() => this.setState(newState))
 
