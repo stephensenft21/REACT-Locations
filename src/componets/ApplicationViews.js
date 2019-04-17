@@ -4,10 +4,14 @@ import AnimalList from './animals/AnimalList'
 import LocationList from './location/LocationLists'
 import EmployeeList from './employee/EmployeeList'
 import OwnerList from './owners/OwnerList'
-import AnimalManager from '..modules/AnimalManager'
+import AnimalManager from '../module/AnimalManager'
 import EmployeeManager from '../module/EmployeeManager';
 import LocationManager from '../module/LocationManager';
-import OwnerManager from '../module/OwnerManager';
+import OwnerManager from '../module/OwnerManager'
+import AnimalDetail from './animals/AnimalDetails'
+import LocationDetail from './location/LocationDetails'
+import EmployeeDetail from './employee/EmployeeDetails'
+import OwnerDetail from './owner/OwnerDetails'
 export default class ApplicationViews extends Component {
     
   
@@ -83,14 +87,34 @@ export default class ApplicationViews extends Component {
                 <Route exact path="/" render={(props) => {
                     return <LocationList locations={this.state.locations} />
                 }} />
-                <Route path="/animals" render={(props) => {
+                <Route exact path="/animals" render={(props) => {
                     return <AnimalList deleteAnimal={this.deleteAnimal}
                     animals={this.state.animals} />
                 }} />
-                <Route path="/employees" render={(props) => {
+
+                <Route path="/animals/:animalId(\d+)" render={(props) =>{
+                    let animal = this.state.animals.find(animal =>
+                       animal.id === parseInt(props.match.params.animalId) )
+               
+                if (!animal) {
+                    animal ={ id:404, name: "404", breed: "Dog not found"}
+                }   
+                return <AnimalDetail animal= {animal} 
+                deleteAnimal={this.deleteAnimal}/>
+                    }} />
+
+
+                <Route exact path="/employees" render={(props) => {
                     return <EmployeeList deleteEmployee={this.deleteEmployee} 
                     employees={this.state.employees} />
                 }} />
+                <Route path="/employees/:employeId(\d+)" render={(props) => {
+                    let employee = this.state.employee.find(employee => employee.id
+                        === parseInt(props.match.params.employeeId))
+                        if(!employee) {
+                            employee = {id:404, name: "404", }
+                        }
+                }
 
                 <Route path = "/owners" render = {(props) => {
                     return <OwnerList deleteOwner={this.deleteOwner}
