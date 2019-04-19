@@ -1,22 +1,23 @@
 import React, {Component} from "react"
 import "./owner.css" 
+import owner from "./ownerIcon.png"
 
-
-export default class Owners extends Component {
+export default class OwnerDetail extends Component {
     state = {
         saveDisabled: false
 
     }
     render(){
         return(
-             <section className="employee">
-            <div key={ this.props.employee.id } className="card">
+             <section className="owner">
+           <div key={ this.props.owner.id } className="card">
                 <div className="card-body">
                     <h4 className="card-title">
-                        
+                    <img src={ owner } className="icon--owner" />
                         { this.props.owner.name }
                     </h4>
-                    <h6 className="card-title">{ this.props.owner }</h6>
+                    <h6 className="card-title">{ this.props.owners }</h6>
+                   
                     <button onClick={
                             () => {
                                 this.setState(

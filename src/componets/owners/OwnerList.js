@@ -1,26 +1,24 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
+import './owners.css'
 
-export default class OwnerList extends Component {
-  render() {
-    return (
-      <section className="content owners">
-        <h1 className ="style">Owner Lists</h1>
-        {this.props.owners.map(owner => (
-          <div key={owner.id} className="card">
-            <div className="card-body">
-              <h5 className="class-title">
-              <p>{owner.name}</p>
-                <button
-                  onClick={() => this.props.deleteOwner(owner.id)}
-                  className="card-link"
-                >
-                  Delete
-                </button>
-              </h5>
-            </div>
-          </div>
-        ))}
-      </section>
-    );
-  }
+export default class OwnersList extends Component {
+    render() {
+        return (
+            <article className="content wrapper">
+                <h1>Owners List</h1>
+                {
+                    this.props.owners.map(owner =>
+                        <div key={owner.id} className="card">
+                            <h5 className="card-body">
+                                {owner.name}
+                                <button
+                                    onClick = {() => this.props.removeClient("owners", owner.id)}
+                                    className = "card-link">Remove Client</button>
+                            </h5>
+                        </div>
+                    )
+                }
+            </article>
+        )
+    }
 }

@@ -1,35 +1,35 @@
-import React, {Component} from "react"
-import "./employee.css" 
+import React, { Component } from 'react'
+import './employee.css'
 
-
-export default class Employee extends Component {
+export default class EmployeeDetail extends Component {
     state = {
         saveDisabled: false
-
     }
-    render(){
-        return(
-             <section className="employee">
-            <div key={ this.props.employee.id } className="card">
-                <div className="card-body">
-                    <h4 className="card-title">
-                        
-                        { this.props.location.name }
-                    </h4>
-                    <h6 className="card-title">{ this.props.employee}</h6>
-                    <button onClick={
-                            () => {
-                                this.setState(
-                                    { saveDisabled: true },
-                                    () => this.props.deleteEmployee(this.props.employee.id)
-                                )
+
+    render() {
+        return (
+            <React.Fragment>
+                <section className="employee">
+                    <div key={this.props.employee.id} className="card">
+                        <div className="card">
+                            <h4 className="card-title">
+                                {this.props.employee.name}
+                            </h4>
+                            <button onClick={
+                                () => {
+                                    this.setState(
+                                        { saveDisabled : true },
+                                        () => this.props.fireEmployee("employees", this.props.employee.id)
+                                    )
+                                }
                             }
-                        }
-                        disabled= { this.state.saveDisabled }
-                        className="card-link">Delete</button>
-                </div>
-            </div>
-        </section>
+                                disabled={this.state.saveDisabled}
+                                className="card-link">Fire</button>
+                        </div>
+                    </div>
+                </section>
+            </React.Fragment>
         )
     }
+
 }

@@ -1,35 +1,23 @@
-import React, {Component} from "react"
-import "./location.css" 
+import React, { Component } from 'react'
 
-
-export default class Location extends Component {
+export default class LocationDetail extends Component {
     state = {
         saveDisabled: false
-
     }
-    render(){
-        return(
-             <section className="location">
-            <div key={ this.props.animal.id } className="card">
-                <div className="card-body">
-                    <h4 className="card-title">
-                        
-                        { this.props.location.name }
-                    </h4>
-                    <h6 className="card-title">{ this.props.location }</h6>
-                    <button onClick={
-                            () => {
-                                this.setState(
-                                    { saveDisabled: true },
-                                    () => this.props.deleteLocation(this.props.location.id)
-                                )
-                            }
-                        }
-                        disabled= { this.state.saveDisabled }
-                        className="card-link">Delete</button>
-                </div>
-            </div>
-        </section>
+    render() {
+        return (
+            <React.Fragment>
+                <section className="location">
+                    <div key={this.props.location.id} className="card">
+                        <h4 className="card">
+                            {this.props.location.name}
+                        </h4>
+                        <h6 className="card-title">
+                            {this.props.location.address}
+                        </h6>
+                    </div>
+                </section>
+            </React.Fragment>
         )
     }
 }

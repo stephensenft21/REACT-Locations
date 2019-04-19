@@ -1,17 +1,3 @@
-.content {
+.wrapper{
     margin-top: 50px;
-
-}  
-
-.border {
-    border-style: solid;
-   font-style: oblique
-}
-
-
-.style{
-    background-color: darkslategrey;
-    color: azure;
-    font-size: 3.1em;
-    font-style: italic
 }
